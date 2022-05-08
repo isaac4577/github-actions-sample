@@ -1,0 +1,14 @@
+name: sample
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  sample-job:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo '${{ github.event }}' | jq
